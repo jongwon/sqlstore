@@ -1,0 +1,21 @@
+
+.container
+  .span5
+    form.form-horizontal(action='/user/update')
+      input(type='hidden', name='user[_id]', value='#{user._id}')
+      .control-group
+        label.control-label(for="inputName") Name
+        .controls
+          input#inputName(type="text", placeholder="Name", name="user[name]", value="#{user.name}", tabindex='1')
+      .control-group
+        label.control-label(for="inputAge") Age 
+        .controls
+          input#inputAge(type="number", placeholder="age", name="user[age]", value="#{user.age}", tabindex='2')
+      .control-group
+        .controls
+          button.btn-small(type="submit", tabindex='3') Apply
+          .btn.btn-small(onclick='javascript:gotoList()', style='float:right;') Go to List
+  script
+    $(document).ready(function(){
+      $('#inputName').focus();
+    });

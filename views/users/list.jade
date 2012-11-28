@@ -1,0 +1,23 @@
+
+
+.container
+	.span12
+		.buttons
+			.btn.btn-small(onclick='javascript:createUser();') create
+	.span5
+		table.table.table-striped.table-bordered.table-hover
+			tr
+				td.name name
+				td.age age
+				td.modify modify
+				td.remove remove
+			-each user in users
+				tr 
+					td.name #{user.name} 
+					td.age (#{user.age}) 
+					td 
+						.btn.btn-mini(onclick='javascript:modifyUser("#{user._id}");') modify
+					td 
+						.btn.btn-mini(onclick='javascript:removeUser("#{user._id}");') remove
+
+		

@@ -1,0 +1,6 @@
+
+1. The data loaded frist from remote server (3008 server in this case) is not saved properly.
+   It maybe because there is no sync method call ...
+
+   
+2. 
