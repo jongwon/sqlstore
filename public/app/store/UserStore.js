@@ -9,7 +9,7 @@ Ext.define('sqlstore.store.UserStore', {
 		model:'sqlstore.model.UserModel',
 		autoload:true,
 		storeId:'UserStore',
-		pageSize:10000,
+		pageSize:10,
 		sorters: [
 			{
 				property: 'updated',

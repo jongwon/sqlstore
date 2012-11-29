@@ -7,6 +7,8 @@ Ext.define('sqlstore.store.SQLStore', {
 	config:{
 		running:false, //0 : 가능, 1: 동작중
 		wait:[],
+        // sorters:[],
+        // filters:[],
 		remote:{},
         onSyncComplete:Ext.emptyFn
 	},
@@ -99,8 +101,13 @@ Ext.define('sqlstore.store.SQLStore', {
                         callback:function(success, response, error, callback){
                             _tmp++;
                             if(!error){
-                                data._set='';
-                                record.setDirty();
+                                if(data._set == 'delete'){
+                                    me.remove(record);
+                                }else{
+                                    data._set='';
+                                    record.setDirty();
+                                }
+                                
                             }
                             if(_tmp == count) me.localSync();
                         }
@@ -127,7 +134,7 @@ Ext.define('sqlstore.store.SQLStore', {
 
         // 로컬에서만 지우도록 처리해 보자...
         records.set('_set', 'remove');
-        console.log(records.get_origin());
+        console.log(records);
         
         this.remove(records);
         this.sync();

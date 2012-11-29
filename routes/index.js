@@ -27,9 +27,11 @@ exports.user = user = {
 			
 		});
 	},
+	
 	list:function(req, res){
 		this.user._listout(res);
 	},
+
 	listJson : function(req, res){
 		var page = num(req.query.page);
 		var limit = num(req.query.limit);

@@ -48,7 +48,7 @@ Ext.define('sqlstore.store.SQLProxy', {
     localExecute:function(sql, callback){
         var db = me.getDatabaseObject();
         db.transaction(function (tx) {
-            tx.executeSql(wql,
+            tx.executeSql(sql,
                 function (tx, result) {
                     if(callback) callback(result);
                 }, onError);
@@ -118,7 +118,7 @@ Ext.define('sqlstore.store.SQLProxy', {
             
         };
         db.transaction(function (tx) {
-            tx.executeSql('SELECT seq FROM sqlite_sequence WHERE name=?',
+            tx.executeSql('SELECT name FROM sqlite_master WHERE name=?',
                 [ tableName ],
                 function (tx, result) {
                     console.log(result);
